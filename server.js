@@ -4,12 +4,14 @@ import fs from 'fs';
 import pdfParse from 'pdf-parse';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv'
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.use(express.json());
 app.use(cors());
@@ -81,7 +83,7 @@ const generateSummaryPrompt = (content) => {
 
 app.post('/analyze', async (req, res) => {
   const { gender, age, weight, height, headCircumference, weightAgeGender, heightAgeGender, headCircumferenceAgeGender, weightHeight } = req.body;
-  const apiKey = "AIzaSyCysvet8wiINcIQcdnagnb8t7MqjDMe3Fw";  // Replace with your actual API key
+  const apiKey = `${process.env.API_KEY}`;  // Gunakan variabel lingkungan untuk API key
   const pdfPath = path.resolve(__dirname, 'source_tambahan.pdf');  // source_tambahan
 
   try {
