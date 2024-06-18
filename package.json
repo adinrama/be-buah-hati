@@ -12,7 +12,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@hapi/hapi": "^21.3.10",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "pdf-lib": "^1.17.1",
     "pdf-parse": "^1.1.1"
   }
